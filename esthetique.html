@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NOM}} | Institut d'Esthétique</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--rose:#c4768a;--rose-light:#e8a8b8;--rose-pale:#fdf0f3;--rose-dark:#a05068;--cream:#fdfaf7;--beige:#f5ede8;--text:#2d2024;--text-light:#9a8085;--white:#fff;--gold:#d4a76a}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+h1,h2,h3{font-family:'Libre Baskerville',serif}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,247,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,118,138,0.1)}
+.nav-logo{font-family:'Libre Baskerville',serif;font-size:1.2rem;color:var(--text);text-decoration:none;letter-spacing:1.5px;display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-sub{font-family:'Nunito',sans-serif;font-size:0.62rem;color:var(--rose);letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:0.76rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:color 0.3s}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{background:var(--rose);color:var(--white)!important;padding:9px 22px;border-radius:20px}
+
+.hero{min-height:100vh;position:relative;display:grid;grid-template-columns:55% 45%;overflow:hidden}
+.hero-content{padding:160px 60px 80px 6%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;background:var(--cream)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--rose-pale);border:1px solid rgba(196,118,138,0.2);padding:8px 18px;border-radius:20px;margin-bottom:28px;width:fit-content}
+.hero-badge span{font-size:0.72rem;color:var(--rose);font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--text);font-weight:400;line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--rose);font-style:italic}
+.hero-sub{font-size:0.95rem;color:var(--text-light);line-height:1.85;margin-bottom:16px;font-weight:300;max-width:450px}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-bottom:38px}
+.stars{color:var(--gold);letter-spacing:2px;font-size:0.9rem}
+.hero-rating-text{font-size:0.8rem;color:var(--text-light)}
+.hero-rating-text strong{color:var(--text)}
+.btn-group{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--rose);color:var(--white);padding:14px 32px;text-decoration:none;font-size:0.76rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;border-radius:30px;transition:all 0.3s;box-shadow:0 6px 20px rgba(196,118,138,0.35)}
+.btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--rose);padding:14px 32px;text-decoration:none;font-size:0.76rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:1.5px solid var(--rose);border-radius:30px;transition:all 0.3s}
+.btn-secondary:hover{background:var(--rose-pale)}
+.hero-visual{position:relative;overflow:hidden}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+.hero-visual-card{position:absolute;bottom:40px;left:-30px;background:var(--white);border-radius:16px;padding:20px 24px;box-shadow:0 10px 40px rgba(0,0,0,0.12);display:flex;align-items:center;gap:14px}
+.hero-visual-card-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--rose),var(--rose-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.hero-visual-card-text strong{display:block;font-size:1.1rem;color:var(--rose);font-family:'Libre Baskerville',serif}
+.hero-visual-card-text span{font-size:0.72rem;color:var(--text-light)}
+
+.strip{background:linear-gradient(135deg,var(--rose),var(--rose-dark));padding:16px 6%;display:flex;justify-content:center;gap:50px;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.9);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:500}
+
+section{padding:90px 6%}
+.section-label{font-size:0.66rem;letter-spacing:4px;text-transform:uppercase;color:var(--rose);margin-bottom:14px;display:block;font-weight:600}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:400;line-height:1.25;margin-bottom:14px}
+.section-title em{color:var(--rose)}
+.section-sub{font-size:0.9rem;color:var(--text-light);line-height:1.85;font-weight:300}
+
+.services{background:var(--white)}
+.services-header{text-align:center;max-width:560px;margin:0 auto 60px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--rose-pale);border-radius:20px;overflow:hidden;transition:all 0.35s;border:1px solid rgba(196,118,138,0.1)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(196,118,138,0.15)}
+.service-img-wrap{height:220px;overflow:hidden;position:relative}
+.service-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.service-card:hover .service-img-wrap img{transform:scale(1.07)}
+.service-body{padding:28px}
+.service-tag{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:10px;display:block}
+.service-body h3{font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:10px}
+.service-body p{font-size:0.82rem;color:var(--text-light);line-height:1.7;font-weight:300;margin-bottom:16px}
+.service-link{font-size:0.75rem;color:var(--rose);font-weight:600;text-decoration:none;letter-spacing:1px;display:flex;align-items:center;gap:6px}
+.service-link::after{content:'→';transition:transform 0.3s}
+.service-card:hover .service-link::after{transform:translateX(4px)}
+
+.about{background:var(--beige);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.about-gallery-img{border-radius:12px;overflow:hidden}
+.about-gallery-img img{width:100%;height:200px;object-fit:cover;transition:transform 0.5s}
+.about-gallery-img:hover img{transform:scale(1.05)}
+.about-gallery-img.tall img{height:290px}
+.about-content .section-sub{margin:18px 0 28px}
+.about-promise{background:var(--white);border-radius:16px;padding:24px;margin-top:10px;display:flex;align-items:flex-start;gap:16px}
+.about-promise-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.about-promise h4{font-size:0.9rem;font-weight:600;margin-bottom:6px}
+.about-promise p{font-size:0.82rem;color:var(--text-light);font-weight:300;line-height:1.6}
+
+.testimonials{background:var(--cream)}
+.testimonials-inner{max-width:1100px;margin:0 auto}
+.testimonials-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;flex-wrap:wrap;gap:20px}
+.rating-big{display:flex;align-items:center;gap:16px}
+.rating-num{font-family:'Libre Baskerville',serif;font-size:4rem;font-weight:700;color:var(--rose);line-height:1}
+.rating-info .stars{display:block;font-size:1rem;margin-bottom:4px}
+.rating-info span{font-size:0.78rem;color:var(--text-light)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial{background:var(--white);border-radius:16px;padding:30px;border:1px solid rgba(196,118,138,0.1);transition:box-shadow 0.3s}
+.testimonial:hover{box-shadow:0 10px 30px rgba(196,118,138,0.1)}
+.testimonial .stars{font-size:0.85rem;display:block;margin-bottom:16px}
+.testimonial q{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:var(--text);line-height:1.65;display:block;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose-light),var(--rose));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.8rem;font-weight:700;flex-shrink:0}
+.testimonial-author strong{font-size:0.82rem;font-weight:600;display:block}
+.testimonial-author span{font-size:0.72rem;color:var(--text-light)}
+
+.contact{background:var(--rose-pale)}
+.contact-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;max-width:1100px;margin:0 auto}
+.contact-info h3{font-size:1.4rem;font-weight:400;margin-bottom:12px}
+.contact-info p{font-size:0.88rem;color:var(--text-light);line-height:1.7;margin-bottom:32px;font-weight:300}
+.contact-details{display:flex;flex-direction:column;gap:16px}
+.contact-detail{display:flex;align-items:center;gap:12px}
+.contact-detail-icon{width:38px;height:38px;background:var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;flex-shrink:0}
+.contact-detail span{font-size:0.86rem;color:var(--text-light);font-weight:300}
+.contact-form-wrap{background:var(--white);border-radius:20px;padding:40px;box-shadow:0 8px 30px rgba(196,118,138,0.1)}
+.contact-form-wrap h3{font-size:1.5rem;font-weight:400;margin-bottom:6px}
+.contact-form-wrap p{font-size:0.82rem;color:var(--text-light);margin-bottom:26px;font-weight:300}
+.form-group{margin-bottom:15px}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1.5px solid #ead8dc;background:var(--rose-pale);padding:12px 16px;font-family:'Nunito',sans-serif;font-size:0.85rem;color:var(--text);outline:none;transition:border 0.3s;border-radius:10px}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--rose)}
+.form-group textarea{height:100px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-submit{width:100%;background:var(--rose);color:#fff;border:none;padding:14px;font-family:'Nunito',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;font-weight:600;border-radius:10px}
+.btn-submit:hover{background:var(--rose-dark)}
+
+footer{background:var(--text);padding:28px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{color:rgba(255,255,255,0.45);font-size:0.72rem}
+footer a{color:var(--rose-light);text-decoration:none;font-size:0.72rem}
+
+.whatsapp{position:fixed;bottom:28px;right:28px;width:50px;height:50px;background:var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(196,118,138,0.4);z-index:200;transition:transform 0.3s}
+.whatsapp:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual{height:300px}
+  .services-grid{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">{{NOM}}<span class="nav-logo-sub">Institut d'Esthétique</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Soins</a></li>
+    <li><a href="#about">Notre histoire</a></li>
+    <li><a href="#reviews">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span>✨ Institut d'Esthétique · {{ZONE}}</span></div>
+    <h1>{{SLOGAN}}<br><em>à {{ZONE}}</em></h1>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <div class="hero-rating-text"><strong>{{AVIS_NOTE}}/5</strong> · {{AVIS_NOMBRE}} avis Google</div>
+    </div>
+    <p class="hero-sub">{{DESCRIPTION}}</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#services" class="btn-secondary">Nos soins</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="{{NOM}}">
+    <div class="hero-visual-card">
+      <div class="hero-visual-card-icon">💎</div>
+      <div class="hero-visual-card-text"><strong>{{AVIS_NOTE}}/5</strong><span>{{AVIS_NOMBRE}} clientes satisfaites</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item">✨ Soins premium</div>
+  <div class="strip-item">✨ Produits naturels</div>
+  <div class="strip-item">✨ Esthéticiennes certifiées</div>
+  <div class="strip-item">✨ {{ZONE}}</div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <span class="section-label">Nos soins</span>
+    <h2 class="section-title">Prenez soin de vous avec<br><em>nos traitements exclusifs</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1560750133-3e2f1fbdb9d0?w=600&q=80" alt="{{SERVICE_1_TITRE}}"></div>
+      <div class="service-body">
+        <span class="service-tag">Soin signature</span>
+        <h3>{{SERVICE_1_TITRE}}</h3>
+        <p>{{SERVICE_1_DESC}}</p>
+        <a href="#contact" class="service-link">Réserver ce soin</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="{{SERVICE_2_TITRE}}"></div>
+      <div class="service-body">
+        <span class="service-tag">Expertise beauté</span>
+        <h3>{{SERVICE_2_TITRE}}</h3>
+        <p>{{SERVICE_2_DESC}}</p>
+        <a href="#contact" class="service-link">Réserver ce soin</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=80" alt="{{SERVICE_3_TITRE}}"></div>
+      <div class="service-body">
+        <span class="service-tag">Rituel bien-être</span>
+        <h3>{{SERVICE_3_TITRE}}</h3>
+        <p>{{SERVICE_3_DESC}}</p>
+        <a href="#contact" class="service-link">Réserver ce soin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-gallery">
+    <div class="about-gallery-img tall"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&q=80" alt="Institut"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="about-gallery-img"><img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80" alt="Soin"></div>
+      <div class="about-gallery-img"><img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80" alt="Beauté"></div>
+    </div>
+  </div>
+  <div class="about-content">
+    <span class="section-label">Notre histoire</span>
+    <h2 class="section-title">La beauté,<br><em>notre passion</em></h2>
+    <p class="section-sub">{{DESCRIPTION}}</p>
+    <div class="about-promise">
+      <div class="about-promise-icon">🌸</div>
+      <div>
+        <h4>Notre engagement beauté</h4>
+        <p>Chaque soin est personnalisé selon votre type de peau et vos besoins spécifiques pour un résultat optimal.</p>
+      </div>
+    </div>
+    <div class="about-promise" style="margin-top:12px">
+      <div class="about-promise-icon">⭐</div>
+      <div>
+        <h4>{{AVIS_NOTE}}/5 sur {{AVIS_NOMBRE}} avis</h4>
+        <p>La satisfaction de nos clientes est notre plus belle récompense et notre engagement quotidien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="testimonials-inner">
+    <div class="testimonials-top">
+      <div>
+        <span class="section-label">Témoignages</span>
+        <h2 class="section-title">Ce que disent<br><em>nos clientes</em></h2>
+      </div>
+      <div class="rating-big">
+        <div class="rating-num">{{AVIS_NOTE}}</div>
+        <div class="rating-info"><span class="stars">★★★★★</span><span>{{AVIS_NOMBRE}} avis Google</span></div>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Un institut exceptionnel ! Les soins sont de grande qualité et l'équipe est aux petits soins. Je recommande vivement.</q>
+        <div class="testimonial-author"><div class="testimonial-avatar">S</div><div><strong>Sophie M.</strong><span>Avis Google</span></div></div>
+      </div>
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Le meilleur institut de {{ZONE}} ! Je viens depuis des années et je suis toujours aussi satisfaite du résultat.</q>
+        <div class="testimonial-author"><div class="testimonial-avatar">L</div><div><strong>Laura B.</strong><span>Avis Google</span></div></div>
+      </div>
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Accueil chaleureux, soins professionnels et résultats visibles. Une vraie bulle de bien-être au cœur de {{ZONE}}.</q>
+        <div class="testimonial-author"><div class="testimonial-avatar">N</div><div><strong>Nathalie D.</strong><span>Avis Google</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <span class="section-label">Nous contacter</span>
+      <h3>Réservez votre soin</h3>
+      <p>Prenez rendez-vous en ligne ou contactez-nous directement. Nous sommes à votre écoute.</p>
+      <div class="contact-details">
+        <div class="contact-detail"><div class="contact-detail-icon">📞</div><span>{{TELEPHONE}}</span></div>
+        <div class="contact-detail"><div class="contact-detail-icon">📍</div><span>{{ZONE}}, Belgique</span></div>
+        <div class="contact-detail"><div class="contact-detail-icon">⏰</div><span>Mar–Sam : 9h – 19h</span></div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <h3>Prendre rendez-vous</h3>
+      <p>Remplissez le formulaire et nous vous recontacterons sous 24h.</p>
+      <div class="form-row">
+        <div class="form-group"><input type="text" placeholder="Prénom"></div>
+        <div class="form-group"><input type="text" placeholder="Nom"></div>
+      </div>
+      <div class="form-group"><input type="email" placeholder="Adresse e-mail"></div>
+      <div class="form-group"><input type="tel" placeholder="Numéro de téléphone"></div>
+      <div class="form-group">
+        <select>
+          <option value="">Choisir un soin</option>
+          <option>{{SERVICE_1_TITRE}}</option>
+          <option>{{SERVICE_2_TITRE}}</option>
+          <option>{{SERVICE_3_TITRE}}</option>
+        </select>
+      </div>
+      <div class="form-group"><textarea placeholder="Vos souhaits ou questions..."></textarea></div>
+      <button class="btn-submit">Confirmer le rendez-vous</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 {{NOM}} · Tous droits réservés · {{ZONE}}, Belgique</p>
+  <a href="https://kairon.be" target="_blank">Site réalisé par Kairon Agency</a>
+</footer>
+
+<a href="tel:{{TELEPHONE}}" class="whatsapp">💆‍♀️</a>
+
+</body>
+</html>

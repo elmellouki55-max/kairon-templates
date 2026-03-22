@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NOM}} | Cosmétiques</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--dark:#111;--white:#fff;--off-white:#f8f7f5;--warm-white:#faf9f7;--gold:#b8965a;--gold-light:#d4b07a;--grey:#e8e5e0;--grey-mid:#a0998e;--text:#1a1814;--text-light:#6e6560}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+h1,h2,h3{font-family:'DM Serif Display',serif}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,90,0.12)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.35rem;color:var(--text);text-decoration:none;letter-spacing:0.5px}
+.nav-logo-dot{color:var(--gold);font-size:1.5rem;line-height:0;vertical-align:middle;margin-left:3px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{color:var(--black)!important;border-bottom:2px solid var(--gold);padding-bottom:2px;font-weight:500!important}
+
+.hero{min-height:100vh;background:var(--off-white);display:grid;grid-template-columns:45% 55%;overflow:hidden}
+.hero-left{padding:150px 60px 80px 6%;display:flex;flex-direction:column;justify-content:center}
+.hero-label{font-size:0.68rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:30px;display:block;font-weight:500}
+.hero h1{font-size:clamp(2.8rem,5.5vw,4.5rem);color:var(--text);font-weight:400;line-height:1.1;margin-bottom:26px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-divider{width:50px;height:2px;background:var(--gold);margin:0 0 26px}
+.hero-sub{font-size:0.95rem;color:var(--text-light);line-height:1.85;margin-bottom:40px;font-weight:300;max-width:400px}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-bottom:36px}
+.stars{color:var(--gold);letter-spacing:2px;font-size:0.9rem}
+.hero-rating span{font-size:0.78rem;color:var(--text-light)}
+.hero-rating strong{color:var(--text)}
+.btn-group{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--black);color:var(--white);padding:15px 36px;text-decoration:none;font-size:0.75rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s}
+.btn-primary:hover{background:var(--gold)}
+.btn-secondary{background:transparent;color:var(--text);padding:15px 36px;text-decoration:none;font-size:0.75rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;border:1.5px solid var(--grey);transition:all 0.3s}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{position:relative;overflow:hidden;background:var(--grey)}
+.hero-right-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9)}
+.hero-badge{position:absolute;bottom:40px;right:40px;background:var(--white);padding:20px 24px;box-shadow:0 8px 30px rgba(0,0,0,0.1)}
+.hero-badge-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--gold);display:block;line-height:1}
+.hero-badge-label{font-size:0.7rem;color:var(--text-light);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;display:block}
+
+.strip{background:var(--black);padding:18px 6%;display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.65);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500}
+.strip-item em{color:var(--gold);font-style:normal}
+
+section{padding:90px 6%}
+.section-label{font-size:0.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;font-weight:500}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.2;margin-bottom:14px}
+.section-title em{color:var(--gold);font-style:italic}
+.section-sub{font-size:0.9rem;color:var(--text-light);line-height:1.85;font-weight:300}
+
+.products{background:var(--white)}
+.products-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.product-card{background:var(--off-white);transition:all 0.35s;cursor:pointer}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.08)}
+.product-img{aspect-ratio:4/5;overflow:hidden;position:relative;background:var(--grey)}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--white);font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;font-weight:500}
+.product-body{padding:22px}
+.product-body h3{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;margin-bottom:8px;transition:color 0.3s}
+.product-card:hover .product-body h3{color:var(--gold)}
+.product-body p{font-size:0.82rem;color:var(--text-light);line-height:1.65;font-weight:300;margin-bottom:14px}
+.product-link{font-size:0.72rem;color:var(--text);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.3s}
+.product-card:hover .product-link{color:var(--gold)}
+.product-link::after{content:'→';transition:transform 0.3s}
+.product-card:hover .product-link::after{transform:translateX(4px)}
+
+.values{background:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.values-img{background:url('https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=900&q=80') center/cover no-repeat;min-height:600px}
+.values-content{padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
+.values-content .section-label{color:var(--gold-light)}
+.values-content .section-title{color:var(--white)}
+.values-content .section-sub{color:rgba(255,255,255,0.6);margin:16px 0 40px}
+.values-list{display:flex;flex-direction:column;gap:24px}
+.value-item{display:flex;gap:18px;align-items:flex-start}
+.value-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:rgba(184,150,90,0.4);line-height:1;flex-shrink:0;width:32px}
+.value-text h4{color:var(--white);font-size:0.9rem;font-weight:500;margin-bottom:6px;letter-spacing:0.5px}
+.value-text p{color:rgba(255,255,255,0.5);font-size:0.82rem;line-height:1.65;font-weight:300}
+
+.testimonials{background:var(--warm-white)}
+.testimonials-inner{max-width:1100px;margin:0 auto}
+.testimonials-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;flex-wrap:wrap;gap:20px}
+.rating-display{display:flex;align-items:baseline;gap:12px}
+.rating-num{font-family:'DM Serif Display',serif;font-size:4.5rem;color:var(--text);line-height:1}
+.rating-info{display:flex;flex-direction:column;gap:4px}
+.rating-stars{color:var(--gold);font-size:1rem;letter-spacing:2px}
+.rating-count{font-size:0.76rem;color:var(--text-light)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial{background:var(--white);padding:32px;border-bottom:3px solid transparent;transition:all 0.3s}
+.testimonial:hover{border-color:var(--gold);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+.testimonial .stars{color:var(--gold);font-size:0.85rem;display:block;margin-bottom:16px;letter-spacing:1.5px}
+.testimonial q{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--text);line-height:1.65;display:block;margin-bottom:20px;font-style:italic}
+.testimonial-author strong{font-size:0.82rem;font-weight:500;display:block}
+.testimonial-author span{font-size:0.72rem;color:var(--text-light)}
+
+.contact{background:var(--off-white);display:grid;grid-template-columns:1fr 1fr}
+.contact-info{padding:80px 6%;background:var(--text)}
+.contact-info .section-label{color:var(--gold)}
+.contact-info .section-title{color:var(--white);margin-bottom:14px}
+.contact-info .section-sub{color:rgba(255,255,255,0.55);margin-bottom:40px}
+.contact-details{display:flex;flex-direction:column;gap:18px}
+.contact-detail{display:flex;align-items:center;gap:14px}
+.contact-detail-icon{width:36px;height:36px;border:1px solid rgba(184,150,90,0.4);display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:var(--gold);flex-shrink:0}
+.contact-detail span{color:rgba(255,255,255,0.65);font-size:0.86rem;font-weight:300}
+.contact-form{padding:70px 50px}
+.contact-form h3{font-size:1.6rem;font-weight:400;margin-bottom:6px}
+.contact-form p{font-size:0.82rem;color:var(--text-light);margin-bottom:28px;font-weight:300}
+.form-group{margin-bottom:16px}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1px solid var(--grey);background:var(--white);padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--text);outline:none;transition:border 0.3s;border-radius:0}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{height:100px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-submit{width:100%;background:var(--black);color:#fff;border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;font-weight:500}
+.btn-submit:hover{background:var(--gold)}
+
+footer{background:var(--black);padding:26px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{color:rgba(255,255,255,0.35);font-size:0.7rem;letter-spacing:1px}
+footer a{color:var(--gold);text-decoration:none;font-size:0.7rem}
+
+.whatsapp{position:fixed;bottom:28px;right:28px;width:50px;height:50px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(184,150,90,0.4);z-index:200;transition:transform 0.3s}
+.whatsapp:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:350px}
+  .products-header{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr}
+  .values-img{height:300px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">{{NOM}}<span class="nav-logo-dot">·</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Produits</a></li>
+    <li><a href="#values">Nos valeurs</a></li>
+    <li><a href="#reviews">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Commander</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <span class="hero-label">Cosmétiques Premium · {{ZONE}}</span>
+    <h1>{{SLOGAN}}<br><em>naturelle</em></h1>
+    <div class="hero-divider"></div>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span><strong>{{AVIS_NOTE}}/5</strong> · {{AVIS_NOMBRE}} avis clients</span>
+    </div>
+    <p class="hero-sub">{{DESCRIPTION}}</p>
+    <div class="btn-group">
+      <a href="#products" class="btn-primary">Découvrir nos produits</a>
+      <a href="#contact" class="btn-secondary">Commander</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-right-img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80" alt="{{NOM}}">
+    <div class="hero-badge">
+      <span class="hero-badge-num">{{AVIS_NOTE}}</span>
+      <span class="hero-badge-label">/ 5 étoiles</span>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item"><em>✦</em> Formules naturelles</div>
+  <div class="strip-item"><em>✦</em> Fabriqué en Belgique</div>
+  <div class="strip-item"><em>✦</em> {{AVIS_NOMBRE}} clients satisfaits</div>
+  <div class="strip-item"><em>✦</em> Livraison rapide</div>
+</div>
+
+<section class="products" id="products">
+  <div class="products-header">
+    <div><span class="section-label">Nos produits</span><h2 class="section-title">Une beauté<br><em>authentique</em></h2></div>
+    <p class="section-sub" style="text-align:right">Chaque produit est formulé avec soin pour sublimer votre beauté naturelle.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80" alt="{{SERVICE_1_TITRE}}">
+        <div class="product-tag">Bestseller</div>
+      </div>
+      <div class="product-body">
+        <h3>{{SERVICE_1_TITRE}}</h3>
+        <p>{{SERVICE_1_DESC}}</p>
+        <a href="#contact" class="product-link">Commander</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=600&q=80" alt="{{SERVICE_2_TITRE}}">
+        <div class="product-tag">Nouveau</div>
+      </div>
+      <div class="product-body">
+        <h3>{{SERVICE_2_TITRE}}</h3>
+        <p>{{SERVICE_2_DESC}}</p>
+        <a href="#contact" class="product-link">Commander</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9041525?w=600&q=80" alt="{{SERVICE_3_TITRE}}">
+        <div class="product-tag">Exclusif</div>
+      </div>
+      <div class="product-body">
+        <h3>{{SERVICE_3_TITRE}}</h3>
+        <p>{{SERVICE_3_DESC}}</p>
+        <a href="#contact" class="product-link">Commander</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="values" id="values">
+  <div class="values-img"></div>
+  <div class="values-content">
+    <span class="section-label">Nos engagements</span>
+    <h2 class="section-title">La beauté<br>responsable</h2>
+    <p class="section-sub">Chaque produit {{NOM}} est créé avec une exigence absolue de qualité et de durabilité.</p>
+    <div class="values-list">
+      <div class="value-item"><div class="value-num">01</div><div class="value-text"><h4>Formules naturelles</h4><p>Nos produits sont formulés avec des ingrédients d'origine naturelle, soigneusement sélectionnés.</p></div></div>
+      <div class="value-item"><div class="value-num">02</div><div class="value-text"><h4>Sans cruauté animale</h4><p>Tous nos produits sont certifiés cruelty-free. Beauté et éthique vont de pair chez {{NOM}}.</p></div></div>
+      <div class="value-item"><div class="value-num">03</div><div class="value-text"><h4>Fabriqué en Belgique</h4><p>Fiers de nos racines belges, nous fabriquons localement pour garantir la fraîcheur et la qualité.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="testimonials" id="reviews">
+  <div class="testimonials-inner">
+    <div class="testimonials-top">
+      <div><span class="section-label">Avis clients</span><h2 class="section-title">Ce qu'ils disent<br><em>de nous</em></h2></div>
+      <div class="rating-display">
+        <div class="rating-num">{{AVIS_NOTE}}</div>
+        <div class="rating-info"><span class="rating-stars">★★★★★</span><span class="rating-count">{{AVIS_NOMBRE}} avis clients</span></div>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Des produits exceptionnels qui ont transformé ma routine beauté. La qualité est incomparable.</q>
+        <div class="testimonial-author"><strong>Marie L.</strong><span>Avis vérifié</span></div>
+      </div>
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Enfin une marque belge qui allie qualité, éthique et résultats visibles. Je ne peux plus m'en passer.</q>
+        <div class="testimonial-author"><strong>Clara V.</strong><span>Avis vérifié</span></div>
+      </div>
+      <div class="testimonial">
+        <span class="stars">★★★★★</span>
+        <q>Livraison rapide, emballage soigné et produits qui tiennent leurs promesses. Bravo {{NOM}} !</q>
+        <div class="testimonial-author"><strong>Isabelle M.</strong><span>Avis vérifié</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="contact-info">
+    <span class="section-label">Nous contacter</span>
+    <h2 class="section-title">Commander<br>& s'informer</h2>
+    <p class="section-sub">Pour commander nos produits ou en savoir plus sur nos formules, contactez-nous.</p>
+    <div class="contact-details">
+      <div class="contact-detail"><div class="contact-detail-icon">📞</div><span>{{TELEPHONE}}</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">📍</div><span>{{ZONE}}, Belgique</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">🌿</div><span>100% naturel · Fabriqué en Belgique</span></div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <h3>Passer commande</h3>
+    <p>Remplissez ce formulaire et nous vous recontacterons rapidement.</p>
+    <div class="form-row">
+      <div class="form-group"><input type="text" placeholder="Prénom"></div>
+      <div class="form-group"><input type="text" placeholder="Nom"></div>
+    </div>
+    <div class="form-group"><input type="email" placeholder="Adresse e-mail"></div>
+    <div class="form-group"><input type="tel" placeholder="Téléphone"></div>
+    <div class="form-group">
+      <select>
+        <option value="">Produit souhaité</option>
+        <option>{{SERVICE_1_TITRE}}</option>
+        <option>{{SERVICE_2_TITRE}}</option>
+        <option>{{SERVICE_3_TITRE}}</option>
+        <option>Coffret découverte</option>
+      </select>
+    </div>
+    <div class="form-group"><textarea placeholder="Votre message ou question..."></textarea></div>
+    <button class="btn-submit">Envoyer ma demande</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 {{NOM}} · TOUS DROITS RÉSERVÉS · {{ZONE}}, BELGIQUE</p>
+  <a href="https://kairon.be" target="_blank">Site réalisé par Kairon Agency</a>
+</footer>
+
+<a href="tel:{{TELEPHONE}}" class="whatsapp">✨</a>
+
+</body>
+</html>

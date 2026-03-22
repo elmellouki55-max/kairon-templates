@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NOM}} | Massagesalon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--terracotta:#b87048;--terracotta-light:#d4956c;--terracotta-pale:#fdf5f0;--brown-dark:#3d2b1f;--sand:#f0e6d8;--sand-dark:#e0d0bc;--olive:#7a8c4a;--white:#fff;--text:#2a1f18;--text-light:#8a7060}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+h1,h2,h3{font-family:'Cinzel',serif}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(61,43,31,0.97);backdrop-filter:blur(10px)}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--white);text-decoration:none;letter-spacing:3px;text-transform:uppercase}
+.nav-logo em{color:var(--terracotta-light);font-style:normal}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;transition:color 0.3s}
+.nav-links a:hover{color:var(--terracotta-light)}
+.nav-cta{color:var(--terracotta-light)!important;border:1px solid var(--terracotta-light);padding:8px 20px}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920&q=80') center/cover no-repeat;filter:brightness(0.35)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to left,rgba(61,43,31,0.9) 0%,rgba(61,43,31,0.4) 50%,transparent 100%)}
+.hero-content{position:relative;z-index:2;padding:120px 6% 80px;max-width:600px;text-align:right;animation:fadeLeft 1.2s ease forwards}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+.hero-label{font-size:0.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--terracotta-light);margin-bottom:22px;display:block}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);color:var(--white);font-weight:400;line-height:1.15;margin-bottom:22px;letter-spacing:2px}
+.hero-divider{width:60px;height:1px;background:var(--terracotta-light);margin:0 0 22px auto}
+.hero-sub{font-size:0.92rem;color:rgba(255,255,255,0.72);line-height:1.85;margin-bottom:14px;font-weight:300}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-bottom:36px;justify-content:flex-end}
+.stars{color:var(--terracotta-light);letter-spacing:2px}
+.hero-rating span{color:rgba(255,255,255,0.6);font-size:0.78rem}
+.hero-rating strong{color:var(--white)}
+.btn-group{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap}
+.btn-primary{background:var(--terracotta);color:var(--white);padding:14px 32px;text-decoration:none;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;transition:all 0.3s;border:2px solid var(--terracotta)}
+.btn-primary:hover{background:var(--terracotta-light);border-color:var(--terracotta-light)}
+.btn-secondary{background:transparent;color:var(--white);padding:14px 32px;text-decoration:none;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;border:2px solid rgba(255,255,255,0.35);transition:all 0.3s}
+.btn-secondary:hover{border-color:rgba(255,255,255,0.7)}
+
+.strip{background:var(--terracotta);padding:16px 6%;display:flex;justify-content:center;gap:50px;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.9);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700}
+
+section{padding:90px 6%}
+.section-label{font-size:0.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--terracotta);margin-bottom:14px;display:block;font-weight:700}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:400;line-height:1.2;margin-bottom:14px;letter-spacing:1px}
+.section-sub{font-size:0.9rem;color:var(--text-light);line-height:1.85;font-weight:300}
+
+.services{background:var(--sand)}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
+.services-header-right{text-align:right}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.service-card{background:var(--brown-dark);position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer}
+.service-img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s,opacity 0.6s;opacity:0.6}
+.service-card:hover .service-img{transform:scale(1.1);opacity:0.35}
+.service-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;background:linear-gradient(to top,rgba(61,43,31,0.9) 0%,transparent 60%)}
+.service-num{font-family:'Cinzel',serif;font-size:2.5rem;color:rgba(184,112,72,0.3);font-weight:400;line-height:1;margin-bottom:6px;transition:color 0.3s}
+.service-card:hover .service-num{color:rgba(184,112,72,0.7)}
+.service-body h3{font-size:1.25rem;color:var(--white);font-weight:400;margin-bottom:8px;letter-spacing:1px;transition:color 0.3s}
+.service-card:hover .service-body h3{color:var(--terracotta-light)}
+.service-body p{font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.6;font-weight:300;max-height:0;overflow:hidden;transition:max-height 0.4s}
+.service-card:hover .service-body p{max-height:80px}
+
+.about{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px}
+.about-content{padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
+.about-content .section-sub{margin:16px 0 28px}
+.about-philosophy{background:var(--terracotta-pale);border-left:4px solid var(--terracotta);padding:22px 26px;margin-bottom:28px}
+.about-philosophy p{font-size:0.9rem;color:var(--text);line-height:1.7;font-style:italic;font-weight:300}
+.about-philosophy strong{color:var(--terracotta);font-style:normal;font-weight:700}
+.about-list{display:flex;flex-direction:column;gap:14px}
+.about-list-item{display:flex;align-items:center;gap:12px;font-size:0.86rem;color:var(--text-light);font-weight:300}
+.about-list-dot{width:8px;height:8px;background:var(--terracotta);border-radius:50%;flex-shrink:0}
+.about-img{background:url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80') center/cover no-repeat}
+
+.testimonials{background:var(--brown-dark)}
+.testimonials-header{text-align:center;max-width:500px;margin:0 auto 50px}
+.testimonials-header .section-label{color:var(--terracotta-light)}
+.testimonials-header .section-title{color:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.testimonial{border:1px solid rgba(184,112,72,0.25);padding:36px 28px}
+.testimonial .stars{color:var(--terracotta-light);font-size:0.85rem;letter-spacing:2px;display:block;margin-bottom:18px}
+.testimonial q{font-family:'Cinzel',serif;font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.65;display:block;margin-bottom:22px;font-weight:400;letter-spacing:0.5px}
+.testimonial-author strong{color:var(--white);font-size:0.82rem;display:block}
+.testimonial-author span{color:rgba(255,255,255,0.4);font-size:0.72rem}
+
+.contact{background:var(--sand);display:grid;grid-template-columns:1fr 1fr}
+.contact-left{background:var(--brown-dark);padding:80px 6%}
+.contact-left .section-label{color:var(--terracotta-light)}
+.contact-left .section-title{color:var(--white);margin-bottom:14px}
+.contact-left .section-sub{color:rgba(255,255,255,0.55);margin-bottom:40px}
+.contact-details{display:flex;flex-direction:column;gap:20px}
+.contact-detail{display:flex;align-items:center;gap:14px}
+.contact-detail-line{width:30px;height:1px;background:var(--terracotta);flex-shrink:0}
+.contact-detail span{color:rgba(255,255,255,0.65);font-size:0.86rem;font-weight:300}
+.contact-right{padding:70px 50px}
+.contact-right h3{font-size:1.5rem;font-weight:400;margin-bottom:6px;letter-spacing:1px}
+.contact-right p{font-size:0.82rem;color:var(--text-light);margin-bottom:26px;font-weight:300}
+.form-group{margin-bottom:15px}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1px solid var(--sand-dark);background:var(--white);padding:12px 16px;font-family:'Lato',sans-serif;font-size:0.85rem;color:var(--text);outline:none;transition:border 0.3s;border-radius:0}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--terracotta)}
+.form-group textarea{height:100px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-submit{width:100%;background:var(--terracotta);color:#fff;border:none;padding:14px;font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;font-weight:700}
+.btn-submit:hover{background:var(--terracotta-light)}
+
+footer{background:#1a0f0a;padding:24px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{color:rgba(255,255,255,0.35);font-size:0.7rem;letter-spacing:1px}
+footer a{color:var(--terracotta-light);text-decoration:none;font-size:0.7rem}
+
+.whatsapp{position:fixed;bottom:28px;right:28px;width:50px;height:50px;background:var(--terracotta);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 15px rgba(184,112,72,0.4);z-index:200;transition:transform 0.3s}
+.whatsapp:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  .hero-content{text-align:left;max-width:100%}
+  .hero-rating,.btn-group{justify-content:flex-start}
+  .hero-divider{margin:0 0 22px 0}
+  .services-header{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .about-img{height:300px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">{{NOM}}</a>
+  <ul class="nav-links">
+    <li><a href="#services">Massages</a></li>
+    <li><a href="#about">Over ons</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Reserveer</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">Massagesalon · {{ZONE}}</span>
+    <h1>{{SLOGAN}}</h1>
+    <div class="hero-divider"></div>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span><strong>{{AVIS_NOTE}}/5</strong> · {{AVIS_NOMBRE}} reviews</span>
+    </div>
+    <p class="hero-sub">{{DESCRIPTION}}</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-primary">Reserveer nu</a>
+      <a href="#services" class="btn-secondary">Onze massages</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item">◈ Authentieke technieken</div>
+  <div class="strip-item">◈ Gecertificeerde therapeuten</div>
+  <div class="strip-item">◈ {{AVIS_NAAM}} reviews</div>
+  <div class="strip-item">◈ {{ZONE}}</div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <div><span class="section-label">Onze behandelingen</span><h2 class="section-title">Kies uw massage</h2></div>
+    <div class="services-header-right"><p class="section-sub" style="text-align:right">Elke massage is afgestemd op uw persoonlijke noden en wensen.</p></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="{{SERVICE_1_TITRE}}">
+      <div class="service-body"><div class="service-num">01</div><h3>{{SERVICE_1_TITRE}}</h3><p>{{SERVICE_1_DESC}}</p></div>
+    </div>
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80" alt="{{SERVICE_2_TITRE}}">
+      <div class="service-body"><div class="service-num">02</div><h3>{{SERVICE_2_TITRE}}</h3><p>{{SERVICE_2_DESC}}</p></div>
+    </div>
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80" alt="{{SERVICE_3_TITRE}}">
+      <div class="service-body"><div class="service-num">03</div><h3>{{SERVICE_3_TITRE}}</h3><p>{{SERVICE_3_DESC}}</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="about" id="about">
+  <div class="about-content">
+    <span class="section-label">Onze filosofie</span>
+    <h2 class="section-title">Lichaam & geest in harmonie</h2>
+    <p class="section-sub">{{DESCRIPTION}}</p>
+    <div class="about-philosophy"><p><strong>Onze missie:</strong> elke klant met kennis en toewijding begeleiden naar een staat van diepe ontspanning en welzijn.</p></div>
+    <div class="about-list">
+      <div class="about-list-item"><div class="about-list-dot"></div>Gecertificeerde massagetherapeuten</div>
+      <div class="about-list-item"><div class="about-list-dot"></div>Gepersonaliseerde behandelingen</div>
+      <div class="about-list-item"><div class="about-list-dot"></div>{{AVIS_NOTE}}/5 gebaseerd op {{AVIS_NOMBRE}} reviews</div>
+      <div class="about-list-item"><div class="about-list-dot"></div>Rustige setting in {{ZONE}}</div>
+    </div>
+  </div>
+  <div class="about-img"></div>
+</div>
+
+<section class="testimonials" id="reviews">
+  <div class="testimonials-header">
+    <span class="section-label">Ervaringen</span>
+    <h2 class="section-title">Wat onze klanten zeggen</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>Een bijzondere ervaring. De therapeut is vakkundig en het resultaat is geweldig. Ik kom zeker terug!</q>
+      <div class="testimonial-author"><strong>Elise V.</strong><span>Google Review</span></div>
+    </div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>De beste massage die ik ooit heb gehad. De sfeer is rustig en het personeel is zeer professioneel.</q>
+      <div class="testimonial-author"><strong>Pieter M.</strong><span>Google Review</span></div>
+    </div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>Een plek van echte rust in {{ZONE}}. Na de behandeling voel ik me compleet ontspannen. Absolute aanrader!</q>
+      <div class="testimonial-author"><strong>Sara D.</strong><span>Google Review</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="contact-left">
+    <span class="section-label">Contacteer ons</span>
+    <h2 class="section-title">Reserveer uw behandeling</h2>
+    <p class="section-sub">Neem contact op voor een reservatie of informatie over onze behandelingen.</p>
+    <div class="contact-details">
+      <div class="contact-detail"><div class="contact-detail-line"></div><span>{{TELEPHONE}}</span></div>
+      <div class="contact-detail"><div class="contact-detail-line"></div><span>{{ZONE}}, België</span></div>
+      <div class="contact-detail"><div class="contact-detail-line"></div><span>Ma–Zo: 10:00 – 20:00</span></div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <h3>Online reserveren</h3>
+    <p>Wij nemen contact op binnen 24 uur om uw afspraak te bevestigen.</p>
+    <div class="form-row">
+      <div class="form-group"><input type="text" placeholder="Voornaam"></div>
+      <div class="form-group"><input type="text" placeholder="Achternaam"></div>
+    </div>
+    <div class="form-group"><input type="tel" placeholder="Telefoonnummer"></div>
+    <div class="form-group">
+      <select>
+        <option value="">Kies een massage</option>
+        <option>{{SERVICE_1_TITRE}}</option>
+        <option>{{SERVICE_2_TITRE}}</option>
+        <option>{{SERVICE_3_TITRE}}</option>
+      </select>
+    </div>
+    <div class="form-group"><textarea placeholder="Bijzondere wensen of opmerkingen..."></textarea></div>
+    <button class="btn-submit">Bevestig reservatie</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 {{NOM}} · ALLE RECHTEN VOORBEHOUDEN · {{ZONE}}</p>
+  <a href="https://kairon.be" target="_blank">Site réalisé par Kairon Agency</a>
+</footer>
+
+<a href="tel:{{TELEPHONE}}" class="whatsapp">🙏</a>
+
+</body>
+</html>

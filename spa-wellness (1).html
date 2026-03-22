@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NOM}} | Spa & Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#3d6b4f;--green-light:#6a9e7f;--beige:#f7f3ed;--beige-dark:#e8e0d5;--gold:#c4a45a;--text:#2a2a2a;--text-light:#7a7a7a}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--text);background:var(--beige);overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(247,243,237,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,164,90,0.15)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:1px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color 0.3s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:#fff!important;padding:10px 24px;border-radius:2px;letter-spacing:1.5px!important}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80') center/cover no-repeat;filter:brightness(0.55)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,55,40,0.75) 0%,rgba(30,55,40,0.3) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 6%;max-width:700px;animation:fadeUp 1.2s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-label{font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block;font-weight:500}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);color:#fff;font-weight:300;line-height:1.15;margin-bottom:24px;font-style:italic}
+.hero h1 strong{font-style:normal;font-weight:600;display:block}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.82);line-height:1.8;margin-bottom:40px;font-weight:300;max-width:520px}
+.hero-rating{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);padding:12px 20px;border-radius:2px;margin-bottom:32px}
+.hero-rating span{color:#fff;font-size:0.82rem;font-weight:300}
+.hero-rating strong{color:var(--gold);font-weight:600}
+.stars{color:var(--gold);letter-spacing:2px}
+.btn-group{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#fff;padding:15px 36px;text-decoration:none;font-size:0.78rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;border:2px solid var(--gold)}
+.btn-primary:hover{background:transparent;color:var(--gold)}
+.btn-secondary{background:transparent;color:#fff;padding:15px 36px;text-decoration:none;font-size:0.78rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;border:2px solid rgba(255,255,255,0.5);transition:all 0.3s}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+
+.strip{background:var(--green);padding:18px 6%;display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:10px;color:#fff;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:400}
+.strip-item span{font-size:1.1rem}
+
+section{padding:90px 6%}
+.section-label{font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;font-weight:500}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:16px;font-style:italic}
+.section-title strong{font-style:normal;font-weight:600}
+.section-sub{font-size:0.92rem;color:var(--text-light);line-height:1.8;font-weight:300}
+
+.services{background:#fff}
+.services-header{text-align:center;max-width:600px;margin:0 auto 60px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{position:relative;overflow:hidden;aspect-ratio:3/4}
+.service-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65);transition:transform 0.6s ease,filter 0.6s ease}
+.service-card:hover .service-img{transform:scale(1.05);filter:brightness(0.5)}
+.service-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%)}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(196,164,90,0.4);font-weight:300;line-height:1;margin-bottom:8px}
+.service-body h3{font-size:1.5rem;color:#fff;font-weight:400;margin-bottom:8px;font-style:italic}
+.service-body p{font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.6;font-weight:300;max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.service-card:hover .service-body p{max-height:100px}
+
+.about{background:var(--beige);display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px}
+.about-img{background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&q=80') center/cover no-repeat;min-height:500px}
+.about-content{padding:80px 70px;display:flex;flex-direction:column;justify-content:center}
+.about-content .section-sub{margin:20px 0 30px}
+.about-features{display:flex;flex-direction:column;gap:16px;margin-top:10px}
+.about-feature{display:flex;align-items:flex-start;gap:14px}
+.about-feature-icon{width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.85rem;flex-shrink:0;margin-top:2px}
+.about-feature-text h4{font-size:0.88rem;font-weight:600;margin-bottom:3px;letter-spacing:0.5px}
+.about-feature-text p{font-size:0.82rem;color:var(--text-light);font-weight:300;line-height:1.5}
+
+.testimonials{background:#fff;text-align:center}
+.testimonials-header{max-width:500px;margin:0 auto 50px}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.testimonial{background:var(--beige);padding:36px 30px;text-align:left;border-top:3px solid var(--gold)}
+.testimonial .stars{font-size:0.85rem;margin-bottom:16px;display:block}
+.testimonial q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;font-weight:300;color:var(--text);line-height:1.6;display:block;margin-bottom:20px}
+.testimonial-author strong{font-size:0.82rem;font-weight:600;display:block}
+.testimonial-author span{font-size:0.75rem;color:var(--text-light)}
+
+.contact{background:var(--green);display:grid;grid-template-columns:1fr 1fr}
+.contact-info{padding:80px 6%;color:#fff}
+.contact-info .section-label{color:var(--gold)}
+.contact-info .section-title{color:#fff}
+.contact-info .section-sub{color:rgba(255,255,255,0.75);margin:20px 0 40px}
+.contact-details{display:flex;flex-direction:column;gap:20px}
+.contact-detail{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,0.85);font-size:0.88rem;font-weight:300}
+.contact-detail-icon{width:40px;height:40px;border:1px solid rgba(255,255,255,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-form{background:var(--beige);padding:60px 50px}
+.contact-form h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-style:italic;font-weight:300;margin-bottom:28px;color:var(--text)}
+.form-group{margin-bottom:18px}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1px solid var(--beige-dark);background:#fff;padding:13px 16px;font-family:'Jost',sans-serif;font-size:0.85rem;color:var(--text);outline:none;transition:border 0.3s;border-radius:0}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--green)}
+.form-group textarea{height:110px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-submit{width:100%;background:var(--green);color:#fff;border:none;padding:15px;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s}
+.btn-submit:hover{background:#2d5239}
+
+footer{background:#1a2e22;padding:30px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer p{color:rgba(255,255,255,0.5);font-size:0.75rem;font-weight:300}
+footer a{color:var(--gold);text-decoration:none;font-size:0.75rem}
+
+.whatsapp{position:fixed;bottom:30px;right:30px;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:200;transition:transform 0.3s}
+.whatsapp:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  .services-grid{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .strip{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">{{NOM}}</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Over ons</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Boek nu</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">Spa & Wellness · {{ZONE}}</span>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span><strong>{{AVIS_NOTE}}/5</strong> gebaseerd op {{AVIS_NOMBRE}} reviews</span>
+    </div>
+    <h1><em>{{SLOGAN}}</em></h1>
+    <p class="hero-sub">{{DESCRIPTION}}</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-primary">Reserveer nu</a>
+      <a href="#services" class="btn-secondary">Onze behandelingen</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item"><span>🌿</span> Authentieke rituelen</div>
+  <div class="strip-item"><span>✨</span> Premium behandelingen</div>
+  <div class="strip-item"><span>🕊️</span> Totale ontspanning</div>
+  <div class="strip-item"><span>📍</span> {{ZONE}}</div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <span class="section-label">Onze behandelingen</span>
+    <h2 class="section-title">Een <strong>unieke ervaring</strong><br>voor lichaam & geest</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80" alt="{{SERVICE_1_TITRE}}">
+      <div class="service-body">
+        <div class="service-num">01</div>
+        <h3>{{SERVICE_1_TITRE}}</h3>
+        <p>{{SERVICE_1_DESC}}</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="{{SERVICE_2_TITRE}}">
+      <div class="service-body">
+        <div class="service-num">02</div>
+        <h3>{{SERVICE_2_TITRE}}</h3>
+        <p>{{SERVICE_2_DESC}}</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img class="service-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="{{SERVICE_3_TITRE}}">
+      <div class="service-body">
+        <div class="service-num">03</div>
+        <h3>{{SERVICE_3_TITRE}}</h3>
+        <p>{{SERVICE_3_DESC}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="about" id="about">
+  <div class="about-img"></div>
+  <div class="about-content">
+    <span class="section-label">Ons verhaal</span>
+    <h2 class="section-title">Meer dan<br><strong>een spa-ervaring</strong></h2>
+    <p class="section-sub">{{DESCRIPTION}}</p>
+    <div class="about-features">
+      <div class="about-feature">
+        <div class="about-feature-icon">✦</div>
+        <div class="about-feature-text">
+          <h4>Gecertificeerde therapeuten</h4>
+          <p>Al onze behandelaars zijn opgeleid en gecertificeerd in hun vakgebied.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-feature-icon">✦</div>
+        <div class="about-feature-text">
+          <h4>Premium producten</h4>
+          <p>Wij werken uitsluitend met hoogwaardige, natuurlijke producten.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <div class="about-feature-icon">✦</div>
+        <div class="about-feature-text">
+          <h4>{{AVIS_NOTE}}/5 op {{AVIS_NOMBRE}} reviews</h4>
+          <p>Onze klanten spreken voor zich. Uitmuntende service is onze standaard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="testimonials" id="reviews">
+  <div class="testimonials-header">
+    <span class="section-label">Wat onze klanten zeggen</span>
+    <h2 class="section-title"><strong>{{AVIS_NOTE}}/5</strong> sterren<br><em>op {{AVIS_NOMBRE}} beoordelingen</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>Een absolute aanrader! De sfeer is ontspannend, het personeel is vriendelijk en professioneel. Ik kom zeker terug.</q>
+      <div class="testimonial-author"><strong>Sophie V.</strong><span>Google Review</span></div>
+    </div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>Prachtige locatie in het hart van {{ZONE}}. De behandelingen zijn top en de prijs-kwaliteitsverhouding is uitstekend.</q>
+      <div class="testimonial-author"><strong>Thomas M.</strong><span>Google Review</span></div>
+    </div>
+    <div class="testimonial">
+      <span class="stars">★★★★★</span>
+      <q>Ik was op zoek naar een moment van rust en vond het hier. Een unieke ervaring die ik zeker opnieuw zal beleven.</q>
+      <div class="testimonial-author"><strong>Laura D.</strong><span>Google Review</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="contact-info">
+    <span class="section-label">Contacteer ons</span>
+    <h2 class="section-title" style="color:#fff">Reserveer<br><strong>uw moment</strong></h2>
+    <p class="section-sub">Neem contact met ons op voor reservaties, vragen of cadeaubonnen.</p>
+    <div class="contact-details">
+      <div class="contact-detail"><div class="contact-detail-icon">📞</div><span>{{TELEPHONE}}</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">📍</div><span>{{ZONE}}, België</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">⏰</div><span>Di–Zo: 10:00 – 20:00</span></div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <h3>Boek een behandeling</h3>
+    <div class="form-row">
+      <div class="form-group"><input type="text" placeholder="Voornaam"></div>
+      <div class="form-group"><input type="text" placeholder="Achternaam"></div>
+    </div>
+    <div class="form-group"><input type="email" placeholder="E-mailadres"></div>
+    <div class="form-group"><input type="tel" placeholder="Telefoonnummer"></div>
+    <div class="form-group">
+      <select>
+        <option value="">Kies een behandeling</option>
+        <option>{{SERVICE_1_TITRE}}</option>
+        <option>{{SERVICE_2_TITRE}}</option>
+        <option>{{SERVICE_3_TITRE}}</option>
+      </select>
+    </div>
+    <div class="form-group"><textarea placeholder="Uw bericht of specifieke wensen..."></textarea></div>
+    <button class="btn-submit">Stuur aanvraag</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 {{NOM}} · Alle rechten voorbehouden</p>
+  <a href="https://kairon.be" target="_blank">Site réalisé par Kairon Agency</a>
+</footer>
+
+<a href="tel:{{TELEPHONE}}" class="whatsapp">📞</a>
+
+</body>
+</html>
